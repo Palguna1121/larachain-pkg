@@ -3,7 +3,6 @@
   "description": "A flexible Laravel package for LLM integration with support for various models",
   "type": "library",
   "require": {
-    "illuminate/support": "^11.41",
     "guzzlehttp/guzzle": "^7.9",
     "php": "^8.2"
   },
@@ -13,7 +12,8 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Palgu\\Larachain\\": "src/"
+      "Palgu\\Larachain\\": "src/",
+      "Palgu\\Larachain\\Tests\\": "tests/"
     }
   },
   "authors": [
