@@ -1,0 +1,26 @@
+{
+  "name": "palgu/larachain",
+  "description": "A flexible Laravel package for LLM integration with support for various models",
+  "type": "library",
+  "require": {
+    "illuminate/support": "^11.41",
+    "guzzlehttp/guzzle": "^7.9",
+    "php": "^8.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.5"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Palgu\\Larachain\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Palguna1121",
+      "email": "palguna2212@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable"
+}
