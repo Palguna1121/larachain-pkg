@@ -33,7 +33,7 @@ return [
 
         'ollama' => [
             'base_url' => $_ENV['OLLAMA_BASE_URL'] ?? 'http://localhost:11434', // Base URL for Ollama
-            'model' => $_ENV['OLLAMA_MODEL'] ?? 'llama2', // Default model for Ollama
+            'model' => $_ENV['OLLAMA_MODEL'] ?? 'gemma2:2b', // Default model for Ollama
         ],
     ],
 
