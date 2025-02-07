@@ -6,7 +6,7 @@ use Palgu\Larachain\Contracts\EmbeddingInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
-class GeminiEmbedding extends BaseEmbedding implements EmbeddingInterface
+class OllamaEmbedding extends BaseEmbedding implements EmbeddingInterface
 {
     protected $client;
 
@@ -14,7 +14,7 @@ class GeminiEmbedding extends BaseEmbedding implements EmbeddingInterface
     {
         parent::__construct($config);
         $this->client = new Client([
-            'base_uri' => 'https://generativelanguage.googleapis.com/v1beta/',
+            'base_uri' => $this->config['base_url'],
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
@@ -26,35 +26,28 @@ class GeminiEmbedding extends BaseEmbedding implements EmbeddingInterface
      */
     public function embed(string $text): array
     {
-        $url = "models/{$this->config['model']}:embedContent";
-        $query = [
-            'key' => $this->config['api_key'],
-        ];
-
+        $url = "api/embeddings";
         $body = [
-            'content' => [
-                'parts' => [
-                    ['text' => $text]
-                ]
-            ]
+            'model' => $this->config['model'],
+            'prompt' => $text,
         ];
+        // var_dump($body);
 
         try {
             $response = $this->client->post($url, [
-                'query' => $query,
                 'json' => $body,
             ]);
 
             $responseData = json_decode($response->getBody(), true);
 
             // Extract embeddings from the response
-            if (isset($responseData['embedding']['values'])) {
-                return $responseData['embedding']['values'];
+            if (isset($responseData['embedding'])) {
+                return $responseData['embedding'];
             }
 
-            throw new \Exception("Invalid response format from Gemini Embedding API.");
+            throw new \Exception("Invalid response format from Ollama Embedding API.");
         } catch (RequestException $e) {
-            throw new \Exception("Gemini Embedding API request failed: " . $e->getMessage());
+            throw new \Exception("Ollama Embedding API request failed: " . $e->getMessage());
         }
     }
 }
