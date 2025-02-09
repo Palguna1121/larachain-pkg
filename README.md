@@ -27,19 +27,19 @@ Buat file config.php di root folder project Anda dengan konfigurasi berikut:
 ```php
 <?php
 
-const LARACHAIN_LLM_PROVIDER = 'gemini';
+const LARACHAIN_LLM_PROVIDER = 'gemini'; // 'gemini' atau 'ollama'
 const GEMINI_API_KEY = 'your_gemini_api_key';
-const GEMINI_MODEL = 'gemini-2.0-flash-thinking-exp';
+const GEMINI_MODEL = 'gemini-2.0-flash-thinking-exp'; //sesuaikan dengan model Gemini
 const GEMINI_TEMPERATURE = 0.7;
 const GEMINI_TOP_P = 0.9;
 const GEMINI_TOP_K = 40;
 const GEMINI_MAX_OUTPUT_TOKENS = 8192;
 
 const OLLAMA_BASE_URL = 'http://localhost:11434';
-const OLLAMA_MODEL = 'gemma2:2b';
+const OLLAMA_MODEL = 'gemma2:2b'; //sesuaikan dengan model Ollama anda
 
-const LARACHAIN_EMBEDDING_PROVIDER = 'gemini';
-const GEMINI_EMBEDDING_MODEL = 'text-embedding-004';
+const LARACHAIN_EMBEDDING_PROVIDER = 'gemini'; // 'gemini' atau 'ollama'
+const GEMINI_EMBEDDING_MODEL = 'text-embedding-004'; //sesuaikan dengan model Gemini embedding
 const LARACHAIN_EMBEDDING_DIMENSION = 768;
 ```
 
